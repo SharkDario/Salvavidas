@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>Obtener el id de la URL</h2>
+
+    <p>
+        <?php
+        // Comprueba si se ha establecido el parámetro 'id'
+        if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        // Muestra el id
+        echo "El id es: " . $id;
+        } else {
+        echo "No se proporcionó un id.";
+        }
+        ?>
+    </p>
+
+</body>
+</html>

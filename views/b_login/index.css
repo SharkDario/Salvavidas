@@ -5,7 +5,6 @@
   font-size: inherit;
   font-weight: 800;
   font-family: inherit;
-  text-shadow: 1px 0 0#1b1633, 0 1px 0#1b1633, -1px 0 0#1b1633, 0-1px 0#1b1633;
   max-width: 100%;
   z-index: 1;
   text-align: left;
@@ -362,6 +361,9 @@
   }
 }
 @media screen and (max-width: 675px) {
+  .aplicacin-salvavidas {
+    font-size: 29px;
+  }
   .frame-parent {
     gap: 18px;
   }

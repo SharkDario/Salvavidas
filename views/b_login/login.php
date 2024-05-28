@@ -34,7 +34,7 @@
             <div class="iniciar-sesin-wrapper">
               <h1 class="iniciar-sesin">Iniciar Sesión</h1>
               <?php if (isset($_GET['error'])): ?>
-              <p class="aplicacin-salvavidas" style="font-size: 20px;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+              <p class="aplicacin-salvavidas" style="font-size: 14px;"><?php echo htmlspecialchars($_GET['error']); ?></p>
               <?php endif; ?>
             </div>
             <button class="image-2-parent">
