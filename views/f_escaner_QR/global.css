@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-jetbrains-mono: "JetBrains Mono";
+  --font-roboto: Roboto;
+
+  /* font sizes */
+  --font-size-7xl: 26px;
+  --font-size-2xl: 21px;
+
+  /* Colors */
+  --color-antiquewhite: #fcecdd;
+  --color-limegreen: #35dd5a;
+  --color-black: #000;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-74xl: 93px;
+
+  /* Border radiuses */
+  --br-16xl: 35px;
+  --br-xl: 20px;
+}
