@@ -13,23 +13,18 @@ $base_de_datos = new Base_de_datos();
 $usuario_sanitizado = $base_de_datos->obtener_conexion()->real_escape_string($usuario);
 
 // Consulta para obtener el hash de la contraseña
-$consulta = "SELECT usu_contrasenna FROM usuario WHERE usu_usuario = ?";
-$resultado = $base_de_datos->obtener_conexion()->prepare($consulta);
-$resultado->bind_param('s', $usuario_sanitizado);
-$resultado->execute();
+$resultado = $base_de_datos->select_simple("usuario", "usu_usuario", $usuario_sanitizado, "s", "usu_contrasenna");
+
 $resultado->store_result(); // Necesario para usar num_rows
 
 if ($resultado->num_rows > 0) {
-    //= mysqli_fetch_assoc($resultado)
-    //$fila = $resultado->fetch_assoc();
-    //$contrasena_hash = $fila['contrasena_hash'];
     $resultado->bind_result($contrasena_hash);
     $resultado->fetch();
 
     // Verificar la contraseña ingresada
     if (password_verify($contrasena_ingresada, $contrasena_hash)) {
         // Contraseña correcta, iniciar sesión del usuario
-        echo "Usuario y contraseña correctos. ¡Bienvenido!";
+        //echo "Usuario y contraseña\ncorrectos. ¡Bienvenido!";
         // Iniciar sesión (por ejemplo, crear una sesión)
         
         $_SESSION['usuario'] = $usuario_sanitizado;

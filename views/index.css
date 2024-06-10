@@ -1,0 +1,303 @@
+.aplicacion,
+        .salvavidas {
+            margin: 0;
+        }
+        ::selection{
+            color:aliceblue;
+        }
+        .aplicacion-salvavidas,
+        .bienvenido {
+            margin: 0;
+            width: 4000px;
+            position: relative;
+            text-shadow: 1px 0 0#1b1633, 0 1px 0#1b1633, -1px 0 0#1b1633, 0-1px 0#1b1633;
+            font-size: 100px;
+            font-weight: 400;
+            font-family: "JetBrains Mono";
+            max-width: 100%;
+        }
+        .aplicacion-salvavidas-2 {
+            margin: -70px 0px 50px 0px;
+            width: 2000px;
+            position: relative;
+            text-shadow: 1px 0 0#1b1633, 0 1px 0#1b1633, -1px 0 0#1b1633, 0-1px 0#1b1633;
+            font-size: 60px;
+            font-weight: 400;
+            font-family: "JetBrains Mono";
+            max-width: 100%;
+        }
+        .aplicacion-salvavidas-3 {
+            margin: 0px 0px 20px 5px;
+            width: 450px;
+            position: relative;
+            text-shadow: 1px 0 0#1b1633, 0 1px 0#1b1633, -1px 0 0#1b1633, 0-1px 0#1b1633;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: "JetBrains Mono";
+            max-width: 100%;
+        }
+
+        .bienvenido {
+            font-size: 40px;
+            text-align: center;
+        }
+        
+        .aplicacion-salvavidas-parent {
+            width: 1356px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            gap: 33px;
+            max-width: 100%;
+            text-align: left;
+            font-size: 60px;
+            color: var(--color-black);
+            font-family: "JetBrains Mono";
+        }
+
+        .frame-child {
+            position: absolute;
+            width: calc(100% - 15.4px);
+            top: 0;
+            right: 7.4px;
+            left: 8px;
+            border-radius: var(--br-16xl);
+            background-color: var(--color-orangered);
+            height: 80px;
+        }
+
+        .escanear-qr {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            display: inline-block;
+            width: 420px;
+            height: 32px;
+            z-index: 1;
+        }
+        
+        .rectangle-parent {
+            height: 80px;
+            width: 420px;
+            position: relative;
+            max-width: 100%;
+            color: black;
+        }
+        .centered_1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: top;
+            height: 50vh;
+            margin-top: 40px;
+        }
+        #qr-canvas {
+            border: 5px solid black;
+            border-radius: 15px;
+            width: 500px;
+            height: 500px;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        .desktop-inner {
+            width: 1356px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        .frame-item {
+            align-self: stretch;
+            width: 404.6px;
+            position: relative;
+            border-radius: var(--br-16xl);
+            background-color: var(--color-orangered);
+            max-width: 100%;
+        }
+
+        .desktop-child {
+            width: 1356px;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 0 var(--padding-12xs) 0 0;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        .lista-de-pacientes {
+            width: 420px;
+            height: 5.2px;
+            position: absolute;
+            margin: 0 !important;
+            bottom: 389.7px;
+            left: calc(50% - 210px);
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .frame-inner {
+            align-self: stretch;
+            width: 404.6px;
+            position: relative;
+            border-radius: var(--br-16xl);
+            background-color: var(--color-orangered);
+            max-width: 100%;
+        }
+
+        .frame-div {
+            width: 1356px;
+            height: 80px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 0 var(--padding-12xs) 0 0;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        .agregar-paciente {
+            width: 420px;
+            height: 5.2px;
+            position: absolute;
+            margin: 0 !important;
+            bottom: 259.7px;
+            left: calc(50% - 210px);
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .desktop {
+            width: 100%;
+            height: 800px;
+            position: relative;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            background-color: #ffc288;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px 0px 50px;
+            box-sizing: border-box;
+            gap: 50px;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            font-size: var(--font-size-5xl);
+            color: var(--color-white);
+            font-family: "JetBrains Mono";
+        }
+
+        .button_1 {
+            background: #ff6a00;
+            border: solid;
+            padding: 10px 20px;
+            display: inline-block;
+            font-size: 30px;
+            font-weight: 600;
+            width: 500px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transform: skew(-21deg);
+        }
+        .span_1 {
+            display: inline-block;
+            transform: skew(21deg);
+        }
+        
+        .btn-group .btn-check:checked + .btn {
+            color: black;
+            background-color: #ff6a00;
+            border-color: black;
+        }
+        .button_1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            left: 0;
+            background: rgb(20, 20, 20);
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.5s;
+        }
+
+        .button_1:hover {
+            color: #fff;
+            background: #ff6a00;
+        }
+
+        .button_1:hover::before {
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 750px) {
+            .aplicacion-salvavidas {
+                font-size: 70px;
+            }
+
+            .bienvenido {
+                font-size: 32px;
+            }
+            .button_1 {
+                width: 400px;
+            }
+            .desktop-inner {
+                margin-top: 30px;
+            }
+        }
+
+        @media screen and (max-width: 675px) {
+            
+
+            .bienvenido {
+                font-size: 20px;
+            }
+
+            .desktop {
+                gap: 25px;
+            }
+            .button_1 {
+                font-size: 27px;
+                width: 350px;
+            }
+            .desktop-inner {
+                margin-top: 10px;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            .aplicacion-salvavidas {
+                font-size: 60px;
+            }
+
+            .bienvenido {
+                font-size: var(--font-size-5xl);
+            }
+
+            .agregar-paciente,
+            .escanear-qr,
+            .lista-de-pacientes {
+                font-size: var(--font-size-lgi);
+            }
+            .button_1 {
+                width: 200px;
+            }
+            .desktop-inner {
+                margin-top: 0px;
+            }
+        }

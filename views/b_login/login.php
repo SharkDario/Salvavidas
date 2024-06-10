@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@400&display=swap"
     />
+    <!-- script de SweetAlert2 -->
+    <script src="https://unpkg.com/sweetalert2@9.5.3/dist/sweetalert2.all.min.js"></script>
     <title>Salvavidas | Login</title>
   </head>
   <body>
@@ -33,8 +35,21 @@
           <div class="frame-group">
             <div class="iniciar-sesin-wrapper">
               <h1 class="iniciar-sesin">Iniciar Sesión</h1>
+                 <?php if (isset($_GET['error'])): ?>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                confirmButtonText: "OK",
+                                confirmButtonColor: "#D05F1F",
+                                text: '<?php echo htmlspecialchars($_GET['error'], ENT_QUOTES, 'UTF-8'); ?>'
+                            });
+                        });
+                    </script>
+                <?php endif; ?>
               <?php if (isset($_GET['error'])): ?>
-              <p class="aplicacin-salvavidas" style="font-size: 20px;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+              <p class="aplicacin-salvavidas" style="font-size: 14px;"><?php echo htmlspecialchars($_GET['error']); ?></p>
               <?php endif; ?>
             </div>
             <button class="image-2-parent">
