@@ -40,7 +40,7 @@ require "../../controllers/controlador_inicio_3.php";
 </head>
 
 <body class="stretched" data-menu-breakpoint="1200" >
-
+	<div id="loader_corazon" class="loader_corazon"></div>
 	
 
 	<div class="desktop bg-gradient-to-br from-orange-500 to-orange-700">
@@ -87,31 +87,31 @@ require "../../controllers/controlador_inicio_3.php";
 									</div>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>DNI:</label>
+									<label>DNI *</label>
 									<input type="number" name="dni" id="dni" class="form-control required" value="" placeholder="DNI" required>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Nombre:</label>
+									<label>Nombre *</label>
 									<input type="text" name="nombre" id="nombre" class="form-control required" value="" placeholder="Nombre" required>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Apellido:</label>
+									<label>Apellido *</label>
 									<input type="text" name="apellido" id="apellido" class="form-control required" value="" placeholder="Apellido" required>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Estatura (m):</label>
+									<label>Estatura (m) *</label>
 									<input type="number" step="0.01" name="estatura" id="estatura" class="form-control required" value="" placeholder="Estatura" required>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Peso (kg):</label>
+									<label>Peso (kg) *</label>
 									<input type="number" step="0.01" name="peso" id="peso" class="form-control required" value="" placeholder="Peso" required>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Fecha de nacimiento:</label>
+									<label>Fecha de nacimiento *</label>
 									<input type="date" class="form-control dobpicker required" name="fecha_nacimiento" id="fecha_nacimiento" value="" placeholder="MM/DD/YYYY" required data-date-end-date="-18y">
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Sexo:</label>
+									<label>Sexo *</label>
 									<div class="btn-group d-flex" data-bs-toggle="buttons">
 										<input type="radio" class="btn-check" name="sexo" id="sexo-male" value="hombre" required>
 										<label class="btn btn-outline-secondary text-transform-none ls-0" for="sexo-male">Hombre</label>
@@ -120,7 +120,7 @@ require "../../controllers/controlador_inicio_3.php";
 									</div>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Tipo de sangre:</label>
+									<label>Tipo de sangre *</label>
 									<select class="form-select required" name="tipo_sangre" id="tipo_sangre" required>
 										<option value="">-- Selecciona Uno --</option>
 										<option value="O+">O+</option>
@@ -134,11 +134,11 @@ require "../../controllers/controlador_inicio_3.php";
 									</select>
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Fecha de ingreso:</label>
+									<label>Fecha de ingreso *</label>
 									<input type="datetime-local" class="form-control dobpicker required" name="fecha_alta" id="jobs-application-date-of-birth" value="" placeholder="MM/DD/YYYY" required data-date-end-date="-18y">
 								</div>
 								<div class="col-md-4 form-group">
-									<label>Descripción:</label>
+									<label>Descripción *</label>
 									<textarea name="descripcion" id="descripcion" class="form-control required" value="" placeholder="Descripción" required></textarea>
 								</div>
 								<div class="col-md-8 form-group" style="margin-top: 30px">
@@ -163,11 +163,21 @@ require "../../controllers/controlador_inicio_3.php";
 	<script src="js/jquery.js"></script>
 	<script src="js/functions.js"></script>
 	
-<!-- Input para el texto del código QR  <a type="hidden">Generador de Código QR</a>-->
-<input type="hidden" id="text" placeholder="Introduce el texto">
+	<!-- Input para el texto del código QR  <a type="hidden">Generador de Código QR</a>-->
+	<input type="hidden" id="text" placeholder="Introduce el texto">
 
-<!-- Contenedor para el código QR -->
-<div id="qrcode"></div>
-
+	<!-- Contenedor para el código QR -->
+	<div id="qrcode"></div>
+	<script>
+		// Muestra el loader cuando la página empieza a cargarse
+		document.addEventListener("DOMContentLoaded", function() {
+			document.getElementById("loader_corazon").style.display = "block";
+		});
+		// Oculta el loader cuando la carga de la página se completa
+		window.addEventListener("load", function() {
+			document.getElementById("loader_corazon").style.display = "none";
+		});
+		
+	</script>
 </body>
 </html>
