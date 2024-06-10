@@ -42,7 +42,8 @@ class Paciente extends Persona
             $this->pac_id_paciente = $base_de_datos->insert_paciente_trigger($usu_id_usuario, $mov_fecha_alta, $mov_descripcion, $mov_fecha_movimiento, $pac_estatura, $pac_peso, $per_id_persona);
             //($usu_id_usuario, $mov_fecha_alta, $mov_descripcion, $pac_estatura, $pac_peso, $per_id_persona)
             //https://salvavidas.great-site.net/salvavidas/views/g_ver_paciente/ver_paciente.php?id=1
-            $enlace = "https://salvavidas.great-site.net/salvavidas/views/g_ver_paciente/ver_paciente.php?id=";
+            $enlace = "http://localhost/salvavidas/views/g_ver_paciente/ver_paciente.php?id=";
+            //$enlace = "https://salvavidas.great-site.net/salvavidas/views/g_ver_paciente/ver_paciente.php?id=";
             $data = $enlace . strval($this->pac_id_paciente);
 
             // Configurar opciones para QRCode, si es necesario
@@ -92,13 +93,13 @@ class Paciente extends Persona
     {
         $this->pac_estatura = $estatura;
         $base_de_datos = new Base_de_datos();
-        $base_de_datos->update("paciente", "pac_estatura", "ii", $estatura, "pac_id_paciente", $this->pac_id_paciente);
+        $base_de_datos->update("paciente", "pac_estatura", "di", $estatura, "pac_id_paciente", $this->pac_id_paciente);
     }
     public function set_peso($peso)
     {
         $this->pac_peso = $peso;
         $base_de_datos = new Base_de_datos();
-        $base_de_datos->update("paciente", "pac_peso", "ii", $peso, "pac_id_paciente", $this->pac_id_paciente);
+        $base_de_datos->update("paciente", "pac_peso", "di", $peso, "pac_id_paciente", $this->pac_id_paciente);
     }
 }
 
@@ -121,3 +122,27 @@ $registro = array(
 $base_de_datos = new Base_de_datos();
 
 $paciente = new Paciente($registro);*/
+
+/*
+for ($i=1; $i<=12; $i++) {
+    $enlace = "http://localhost/salvavidas/views/g_ver_paciente/ver_paciente.php?id=";
+    $data = $enlace . strval($i);
+
+    // Configurar opciones para QRCode, si es necesario
+    $options = new QROptions([
+        'outputType' => QRCode::OUTPUT_MARKUP_SVG,
+        'eccLevel' => QRCode::ECC_L, // Nivel de corrección de errores, puede ser L, M, Q, H
+        'scale' => 5, // Escala del QR, ajusta según sea necesario
+    ]);
+
+    // Generar el código QR en formato 
+    $qr = new QRCode($options);
+
+    // Obtener la imagen del código QR en formato 
+    $qrImageData = $qr->render($data);
+
+    // Se guarda en la base de datos
+    $base_de_datos = new Base_de_datos();
+    $base_de_datos->update("paciente", "pac_qr", "si", $qrImageData, "pac_id_paciente", $i);
+}
+*/
