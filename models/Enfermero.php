@@ -59,19 +59,18 @@ class Enfermero extends Usuario
 }
 /*
 $arreglo_enfermero = array(
-    "per_nombre" => "Victor",
-    "per_apellido" => "Coronel",
+    "per_nombre" => "Aldo",
+    "per_apellido" => "Ortega",
     "per_sexo" => "hombre",
-    "per_dni" => 74545454,
-    "per_fecha_nacimiento" => "1998-08-07",
+    "per_dni" => 56564454,
+    "per_fecha_nacimiento" => "2003-04-07",
     "per_tipo_sangre" => "A+",
-    "usu_usuario" => "Victor7",
-    "usu_contrasenna" => "Dario013",
-    "usu_matricula" => 77646464,
+    "usu_usuario" => "Aldo7",
+    "usu_contrasenna" => "Aldo012",
+    "usu_matricula" => 44721564,
     "usu_fecha_inicio_actividad" => "2024-01-28",
     "enfper_habilidad" => "Monitorizacion",
     "registro_nuevo" => true
 );
 
-$enfermero = new Enfermero($arreglo_enfermero);
-*/
+$enfermero = new Enfermero($arreglo_enfermero);*/

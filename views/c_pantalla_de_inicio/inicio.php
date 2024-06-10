@@ -16,7 +16,7 @@ require "../../controllers/controlador_inicio_1.php";
     <title>Salvavidas | Inicio</title>
   </head>
   <body>
-      
+      <div id="loader_corazon" class="loader_corazon"></div>
       <div class="desktop bg-gradient-to-br from-orange-300 to-orange-500">
           <section class="aplicacion-salvavidas-parent">
               <h1 class="aplicacion-salvavidas animate-pulse">
@@ -73,19 +73,20 @@ require "../../controllers/controlador_inicio_1.php";
             </div>
             
             <?php
-            } else {
-                ?>
-            
-            <div class="desktop-inner">
-                <button class="button_1" id="agregar_seguimiento" name="agregar_seguimiento" type="submit">
-                    <span class="span_1">AGREGAR SEGUIMIENTO</span>
-                </button>
-            </div>
-            
-            <?php
-            }
+            } 
             ?>
           </form>
       </div>
+      <script>
+		// Muestra el loader cuando la página empieza a cargarse
+		document.addEventListener("DOMContentLoaded", function() {
+			document.getElementById("loader_corazon").style.display = "block";
+		});
+		// Oculta el loader cuando la carga de la página se completa
+		window.addEventListener("load", function() {
+			document.getElementById("loader_corazon").style.display = "none";
+		});
+		
+	</script>
   </body>
 </html>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+require_once "../models/Base_de_datos.php";
+require_once "../models/Paciente.php";
+require_once "../models/Medico.php";
+require_once "../models/Enfermero.php";
 //require_once "../../models/Base_de_datos.php";
 $nombre_usuario = $_SESSION['nombre_usuario'];
 $usuario_objeto = $_SESSION['usuario_objeto'];
@@ -21,7 +25,7 @@ if (!isset($nombre_usuario)) {
 
 //if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['paciente_id'])) {
 $paciente_id = htmlspecialchars($_POST['paciente_id']);
-    
+
 //$base_de_datos = new Base_de_datos();
 //$paciente_registro = $base_de_datos->select("vista_paciente", "i", "pac_id_paciente", $paciente_id);
 

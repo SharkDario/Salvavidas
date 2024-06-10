@@ -14,11 +14,12 @@ require "../../controllers/controlador_lista_epicrisis_1.php";
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@300;400;500;600;700&display=swap" />
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../index.css" />
 
 	<!-- Core Style -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css?v=1.0">
+
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="../index.css" />
 
 	<!-- Font Icons -->
 	<link rel="stylesheet" href="css/font-icons.css">
@@ -52,7 +53,7 @@ require "../../controllers/controlador_lista_epicrisis_1.php";
 </head>
 
 <body class="stretched" data-menu-breakpoint="1200" >
-
+	<div id="loader_corazon" class="loader_corazon"></div>
 	<div id="wrapper" class="bg-gradient-to-br from-orange-500 to-orange-700">
 		<!-- Content================================ -->
 		<section id="content" class="bg-gradient-to-br from-orange-300 to-orange-500 rounded-3xl shadow-lg p-8 max-w-9xl w-full mx-auto">
@@ -127,9 +128,11 @@ require "../../controllers/controlador_lista_epicrisis_1.php";
 							</tbody>
 						</table>
 					</div>
-					<br />
-					
-					
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 				</div>
 			</div>
 		</section><!-- #content end -->
@@ -152,6 +155,16 @@ require "../../controllers/controlador_lista_epicrisis_1.php";
 			jQuery('#datatable1').dataTable();
 		});
 	</script>
-
+	<script>
+		// Muestra el loader cuando la página empieza a cargarse
+		document.addEventListener("DOMContentLoaded", function() {
+			document.getElementById("loader_corazon").style.display = "block";
+		});
+		// Oculta el loader cuando la carga de la página se completa
+		window.addEventListener("load", function() {
+			document.getElementById("loader_corazon").style.display = "none";
+		});
+		
+	</script>
 </body>
 </html>

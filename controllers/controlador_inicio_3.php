@@ -1,6 +1,11 @@
 <?php
 // Este controlador servira para cualquier vista que este después del inicio
 session_start();
+require_once __DIR__ . '/../models/Base_de_datos.php';
+require_once __DIR__ . '/../models/Paciente.php';
+require_once __DIR__ . '/../models/Medico.php';
+require_once __DIR__ . '/../models/Enfermero.php';
+
 $nombre_usuario = $_SESSION['nombre_usuario'];
 $usuario_objeto = $_SESSION['usuario_objeto'];
 $usuario_puesto = $_SESSION['usuario_puesto'];

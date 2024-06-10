@@ -51,22 +51,38 @@ class Base_de_datos {
     }
 
     // SELECT para todos los registros de una vista
-    public function select_all($vista, $atributos_nombres)
+    public function select_all($vista, $atributos_nombres, $cerrar=true)
     {
         $stmt = $this->obtener_conexion()->prepare("SELECT $atributos_nombres FROM $vista");
         $stmt->execute();
         $registro = $stmt->get_result();
         $registro = $registro->fetch_all(MYSQLI_ASSOC);
-        $this->cerrar_conexion();
+        if($cerrar)
+        {
+            $this->cerrar_conexion();
+        }
         // Devuelve el o los registros
         return $registro;
     }
 
     // SELECT para registro/s por medio de una vista
-    public function select($vista, $atributo_tipo, $atributo_nombre, $atributo_valor, $registros = false)
+    public function select($vista, $atributo_tipo, $atributo_nombre, $atributo_valor, $registros = false, $order="")
     {
+        // Lista blanca de columnas permitidas para ordenar
+        $allowed_columns = ["mov_fecha_movimiento", "otra_columna"];  // Añade más columnas si es necesario
+        // Lista blanca de direcciones permitidas para ordenar
+        $allowed_directions = ["ASC", "DESC"];
+
+        // Validar y construir el ORDER BY clause
+        $order_by = "";
+        if (!empty($order)) {
+            $order_parts = explode(" ", $order);
+            if (count($order_parts) == 2 && in_array($order_parts[0], $allowed_columns) && in_array(strtoupper($order_parts[1]), $allowed_directions)) {
+                $order_by = "ORDER BY " . $order_parts[0] . " " . strtoupper($order_parts[1]);
+            }
+        }
         // Utilizando las vistas se obtienen uno o muchos registros que coincidan con el atributo
-        $stmt = $this->obtener_conexion()->prepare("SELECT * FROM $vista WHERE $atributo_nombre=?");
+        $stmt = $this->obtener_conexion()->prepare("SELECT * FROM $vista WHERE $atributo_nombre=? $order_by");
         $stmt->bind_param($atributo_tipo, $atributo_valor);
         $stmt->execute();
         $registro = $stmt->get_result();
@@ -113,6 +129,135 @@ class Base_de_datos {
             // Preparar la consulta de inserción
             $stmt = $conexion->prepare($consulta);
             $stmt->bind_param("ddi", $pac_estatura, $pac_peso, $per_id_persona);
+            $stmt->execute();
+            $id_insertado = $conexion->insert_id;
+
+            // Commit de la transacción
+            $conexion->commit();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Devolver el ID recién insertado
+            return $id_insertado;
+        } catch (Exception $e) {
+            // Si hay un error, revertir la transacción
+            $conexion->rollback();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Lanza la excepción para manejarla en otro lugar
+            throw $e;
+        }
+    }
+
+    public function insert_enfermedad_trigger($fic_id_ficha, $movenf_fecha_inicio, $movenf_fecha_fin, $movenf_resultado, $movenf_fecha_movimiento, $enf_nivel_gravedad, $enf_descripcion, $enfgen_id_enfermedad)
+    {
+        // Construir la consulta de inserción
+        $consulta = "INSERT INTO enfermedad (enf_nivel_gravedad, enf_descripcion, enfgen_id_enfermedad) VALUES (?, ?, ?)";
+
+        // Conectar a la base de datos
+        $conexion = $this->obtener_conexion();
+
+        // Iniciar una transacción
+        $conexion->begin_transaction();
+
+        try {
+            // Establecer las variables de sesión
+            $stmt = $conexion->prepare("SET @fic_id_ficha = ?, @movenf_fecha_inicio = ?, @movenf_fecha_fin = ?, @movenf_resultado = ?, @movenf_fecha_movimiento = ?");
+            $stmt->bind_param("issss", $fic_id_ficha, $movenf_fecha_inicio, $movenf_fecha_fin, $movenf_resultado, $movenf_fecha_movimiento);
+            $stmt->execute();
+
+            // Preparar la consulta de inserción
+            $stmt = $conexion->prepare($consulta);
+            $stmt->bind_param("ssi", $enf_nivel_gravedad, $enf_descripcion, $enfgen_id_enfermedad);
+            $stmt->execute();
+            $id_insertado = $conexion->insert_id;
+
+            // Commit de la transacción
+            $conexion->commit();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Devolver el ID recién insertado
+            return $id_insertado;
+        } catch (Exception $e) {
+            // Si hay un error, revertir la transacción
+            $conexion->rollback();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Lanza la excepción para manejarla en otro lugar
+            throw $e;
+        }
+    }
+
+    public function insert_tratamiento_trigger($fic_id_ficha, $movtra_fecha_inicio, $movtra_fecha_fin, $movtra_resultado, $movtra_fecha_movimiento, $tra_descripcion, $tragen_id_tratamiento)
+    {
+        // Construir la consulta de inserción
+        $consulta = "INSERT INTO tratamiento (tra_descripcion, tragen_id_tratamiento) VALUES (?, ?)";
+
+        // Conectar a la base de datos
+        $conexion = $this->obtener_conexion();
+
+        // Iniciar una transacción
+        $conexion->begin_transaction();
+
+        try {
+            // Establecer las variables de sesión
+            $stmt = $conexion->prepare("SET @fic_id_ficha = ?, @movtra_fecha_inicio = ?, @movtra_fecha_fin = ?, @movtra_resultado = ?, @movtra_fecha_movimiento = ?");
+            $stmt->bind_param("issss", $fic_id_ficha, $movtra_fecha_inicio, $movtra_fecha_fin, $movtra_resultado, $movtra_fecha_movimiento);
+            $stmt->execute();
+
+            // Preparar la consulta de inserción
+            $stmt = $conexion->prepare($consulta);
+            $stmt->bind_param("si", $tra_descripcion, $tragen_id_tratamiento);
+            $stmt->execute();
+            $id_insertado = $conexion->insert_id;
+
+            // Commit de la transacción
+            $conexion->commit();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Devolver el ID recién insertado
+            return $id_insertado;
+        } catch (Exception $e) {
+            // Si hay un error, revertir la transacción
+            $conexion->rollback();
+
+            // Cerrar la conexión
+            $this->cerrar_conexion();
+
+            // Lanza la excepción para manejarla en otro lugar
+            throw $e;
+        }
+    }
+
+    public function insert_antecedente_trigger($fic_id_ficha, $movant_fecha_inicio, $movant_fecha_fin, $movant_resultado, $movant_fecha_movimiento, $ant_frecuencia, $antgen_id_antecedente)
+    {
+        // Construir la consulta de inserción
+        $consulta = "INSERT INTO antecedente (ant_frecuencia, antgen_id_antecedente) VALUES (?, ?)";
+
+        // Conectar a la base de datos
+        $conexion = $this->obtener_conexion();
+
+        // Iniciar una transacción
+        $conexion->begin_transaction();
+
+        try {
+            // Establecer las variables de sesión
+            $stmt = $conexion->prepare("SET @fic_id_ficha = ?, @movant_fecha_inicio = ?, @movant_fecha_fin = ?, @movant_resultado = ?, @movant_fecha_movimiento = ?");
+            $stmt->bind_param("issss", $fic_id_ficha, $movant_fecha_inicio, $movant_fecha_fin, $movant_resultado, $movant_fecha_movimiento);
+            $stmt->execute();
+
+            // Preparar la consulta de inserción
+            $stmt = $conexion->prepare($consulta);
+            $stmt->bind_param("ii", $ant_frecuencia, $antgen_id_antecedente);
             $stmt->execute();
             $id_insertado = $conexion->insert_id;
 
