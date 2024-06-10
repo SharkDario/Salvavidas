@@ -3,6 +3,8 @@ Se trata de automatizar el trabajo del enfermero y del médico con respecto al p
 
 Modelo - Vista - Controlador
 
+POO - PHP - JavaScript - MySQL
+
 El archivo bd_salvavidas.rar
 Contiene el archivo de la base de datos hasta el momento de su entrega, sea primera, segunda, tercera o cuarta.
 La cual debería ser cargada en su localhost.
