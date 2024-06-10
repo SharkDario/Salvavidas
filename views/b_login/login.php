@@ -12,6 +12,7 @@
     <title>Salvavidas | Login</title>
   </head>
   <body>
+    <div id="loader_corazon" class="loader_corazon"></div>
     <div class="welcome-emaillightmdlg">
       <div class="aplicacin-salvavidas-wrapper">
         <h1 class="aplicacin-salvavidas">Aplicación Salvavidas</h1>
@@ -113,5 +114,16 @@
           passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
       }
     </script>
+    <script>
+	    // Muestra el loader cuando la página empieza a cargarse
+	    document.addEventListener("DOMContentLoaded", function() {
+	    	document.getElementById("loader_corazon").style.display = "block";
+	    });
+	    // Oculta el loader cuando la carga de la página se completa
+	    window.addEventListener("load", function() {
+	    	document.getElementById("loader_corazon").style.display = "none";
+	    });
+		
+	</script>
   </body>
 </html>

@@ -16,6 +16,39 @@
   justify-content: flex-end;
   box-sizing: border-box;
 }
+::selection {
+    color: aliceblue;
+}
+/* HTML: <div class="loader"></div> */
+.loader_corazon {
+    width: 20vw;
+    display: flex; /* Usa flexbox para centrar vertical y horizontalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    aspect-ratio: 1;
+    color: #dc1818;
+    background: radial-gradient(circle at 60% 65%, currentColor 62%, #0000 65%) top left, radial-gradient(circle at 40% 65%, currentColor 62%, #0000 65%) top right, linear-gradient(to bottom left, currentColor 42%,#0000 43%) bottom left, linear-gradient(to bottom right,currentColor 42%,#0000 43%) bottom right;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    position: fixed; /* Posiciona el loader en relación con la ventana */
+    top: 30%; /* Coloca el loader en la parte superior */
+    left: 40%; /* Coloca el loader en el lado izquierdo */
+    z-index: 9999; /* Asegura que el loader esté encima de otros elementos */
+}
+.loader_corazon:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    opacity: 0.4;
+    animation: l3 1s infinite;
+}
+@keyframes l3 {
+    to {
+        transform: scale(1.8);
+        opacity: 0
+    }
+}
 .illustration-icon {
   position: absolute;
   top: -10px;
