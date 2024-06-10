@@ -1,6 +1,10 @@
 <?php
 session_start();
 require "../../models/Base_de_datos.php";
+require_once "../../models/Paciente.php";
+require_once "../../models/Medico.php";
+require_once "../../models/Enfermero.php";
+
 $nombre_usuario = $_SESSION['nombre_usuario'];
 $usuario_objeto = $_SESSION['usuario_objeto'];
 $usuario_puesto = $_SESSION['usuario_puesto'];

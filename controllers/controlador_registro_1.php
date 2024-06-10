@@ -1,7 +1,9 @@
 <?php
 require __DIR__ . '/../models/Medico.php';
 require __DIR__ . '/../models/Paciente.php';
+require __DIR__ . '/../models/Enfermero.php';
 require_once __DIR__ . '/../models/Base_de_datos.php';
+
 session_start();
 $nombre_usuario = $_SESSION['nombre_usuario'];
 $usuario_objeto = $_SESSION['usuario_objeto'];

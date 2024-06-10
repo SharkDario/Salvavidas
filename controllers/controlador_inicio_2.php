@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+require_once __DIR__ . '/../models/Base_de_datos.php';
+require_once __DIR__ . '/../models/Paciente.php';
+require_once __DIR__ . '/../models/Medico.php';
+require_once __DIR__ . '/../models/Enfermero.php';
+
 $nombre_usuario = $_SESSION['nombre_usuario']; // Recuperar los valores de las variables ocultas
 $usuario_objeto = $_SESSION['usuario_objeto'];
 $usuario_puesto = $_SESSION['usuario_puesto'];
@@ -31,7 +36,8 @@ if (isset($_POST['escanear_qr'])) {
     header('Location: ../views/j_lista_de_epicrisis/lista_epicrisis.php');
     exit();
 } elseif (isset($_POST['analisis'])) {
-
+    header('Location: ../views/z_analisis/z_analisis.php');
+    exit();
 } else {
     //agregar_seguimiento
 }

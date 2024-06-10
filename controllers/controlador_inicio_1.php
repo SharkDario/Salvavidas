@@ -27,4 +27,4 @@ if ($puesto_usuario['puesto'] == "Médico") {
 }
 $_SESSION['nombre_usuario'] = $usu_usuario;
 $_SESSION['usuario_objeto'] = $usuario;
-$_SESSION['usuario_puesto'] = $puesto_usuario;
+$_SESSION['usuario_puesto'] = $puesto_usuario['puesto'];
